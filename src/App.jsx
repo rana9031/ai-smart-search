@@ -84,58 +84,289 @@ function App() {
   const generateAIResponse = (userMessage, mode, hasImage) => {
     const lowerMessage = userMessage.toLowerCase();
     
+    // Image analysis responses
     if (hasImage) {
-      return `🖼️ Image Analysis Complete:\n\nI can see you've uploaded an image. In a production version, this would use:\n• Computer Vision APIs (Google Vision, Azure CV, AWS Rekognition)\n• Medical image analysis for health-related queries\n• Object detection and classification\n• OCR for text extraction\n\nFor health-related images:\n• Skin condition analysis\n• X-ray/MRI interpretation (with proper medical AI)\n• Symptom visualization\n• Medication identification\n\nNote: Always consult healthcare professionals for medical advice.`;
+      return `🖼️ **Image Analysis Complete**
+
+I can see you've uploaded an image. Here's what I can help with:
+
+**Visual Analysis:**
+• Object and scene identification
+• Text extraction (OCR)
+• Color and composition analysis
+• Quality assessment
+
+**For Health Images:**
+• Skin condition observations
+• Medication identification
+• Medical equipment recognition
+• Symptom visualization
+
+**For Documents:**
+• Text extraction and formatting
+• Data table recognition
+• Diagram interpretation
+
+⚠️ **Important Note:** For medical images, always consult healthcare professionals. AI analysis is for informational purposes only.
+
+What specific information would you like about this image?`;
     }
     
+    // Health-related responses
     if (lowerMessage.includes('health') || lowerMessage.includes('medical') || 
         lowerMessage.includes('symptom') || lowerMessage.includes('doctor') ||
         lowerMessage.includes('medicine') || lowerMessage.includes('disease')) {
-      return `🏥 Health Information:\n\nI can help with general health information. In a full implementation, I would:\n\n• Provide evidence-based health information\n• Suggest when to see a doctor\n• Explain medical terms\n• Offer wellness tips\n• Connect to telemedicine services\n\n⚠️ Important Medical Disclaimer:\nThis AI assistant provides general information only and is NOT a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified health provider with any questions about a medical condition.\n\nFor medical emergencies, call emergency services immediately.`;
+      return `🏥 **Health Information Assistant**
+
+I can help with general health information:
+
+**What I Can Assist With:**
+• General health questions and wellness tips
+• Explaining medical terms and conditions
+• Medication information (general)
+• Healthy lifestyle guidance
+• When to seek professional care
+
+**How to Get Help:**
+1. Ask specific questions about symptoms or conditions
+2. Request explanations of medical terms
+3. Inquire about general wellness practices
+4. Get guidance on when to see a doctor
+
+⚠️ **Critical Medical Disclaimer:**
+This AI provides general information only and is NOT a substitute for professional medical advice, diagnosis, or treatment. Always consult qualified healthcare providers for medical concerns.
+
+🚨 **For emergencies, call emergency services immediately.**
+
+What health topic can I help you understand better?`;
     }
     
+    // Coding/Programming queries
+    if (lowerMessage.includes('code') || lowerMessage.includes('programming') || 
+        lowerMessage.includes('function') || lowerMessage.includes('javascript') ||
+        lowerMessage.includes('python') || lowerMessage.includes('react')) {
+      return `💻 **Programming Assistant**
+
+I can help you with:
+
+**Code Examples:**
+• Clean, working code snippets
+• Best practices and patterns
+• Debugging assistance
+• Code optimization
+
+**Languages & Frameworks:**
+• JavaScript, Python, Java, C++
+• React, Node.js, Django
+• HTML, CSS, SQL
+• And many more!
+
+**How I Help:**
+1. Provide step-by-step explanations
+2. Show working code examples
+3. Explain concepts clearly
+4. Suggest improvements
+
+Please share your specific coding question or the problem you're trying to solve!`;
+    }
+    
+    // Comparison requests
+    if (lowerMessage.includes('compare') || lowerMessage.includes('difference') || 
+        lowerMessage.includes('vs') || lowerMessage.includes('versus')) {
+      return `📊 **Comparison Analysis**
+
+I'll help you compare options clearly:
+
+**My Approach:**
+• Present information in table format
+• Highlight key differences
+• Show pros and cons
+• Provide recommendations
+
+**Example Format:**
+
+| Feature | Option A | Option B |
+|---------|----------|----------|
+| Speed | Fast | Moderate |
+| Cost | High | Low |
+| Ease | Simple | Complex |
+
+Please specify what you'd like to compare, and I'll create a detailed comparison for you!`;
+    }
+    
+    // Greetings
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-      return "Hello! I'm your AI assistant. How can I help you today?";
+      return `👋 **Hello! I'm AI Smart Search**
+
+I'm here to help you find and understand information quickly!
+
+**What I Can Do:**
+• Answer general knowledge questions
+• Provide programming help
+• Explain complex topics simply
+• Research and summarize information
+• Brainstorm ideas
+• Assist with learning
+
+**How to Get the Best Results:**
+• Ask specific questions
+• Request step-by-step guidance if needed
+• Let me know if you want comparisons or summaries
+• Feel free to ask follow-up questions
+
+What would you like to know today?`;
     }
     
     if (lowerMessage.includes('how are you')) {
-      return "I'm doing great, thank you for asking! I'm here to help you with any questions or tasks you have.";
+      return `I'm functioning perfectly and ready to assist! 😊
+
+**I'm here to help you with:**
+• Quick answers to your questions
+• Detailed explanations of complex topics
+• Step-by-step guidance
+• Research and information gathering
+• Problem-solving and brainstorming
+
+What can I help you with today?`;
     }
     
     if (lowerMessage.includes('what can you do')) {
-      return "I can help you with various tasks like answering questions, providing information, having conversations, and assisting with problem-solving. What would you like to know?";
+      return `⚡ **My Capabilities**
+
+**Knowledge & Research:**
+• Answer general knowledge questions
+• Explain complex topics in simple terms
+• Provide up-to-date information
+• Summarize long content
+
+**Technical Help:**
+• Programming assistance with code examples
+• Debugging and optimization tips
+• Technical explanations
+• Best practices guidance
+
+**Productivity:**
+• Brainstorming ideas
+• Creating outlines and plans
+• Writing assistance
+• Data analysis help
+
+**Learning Support:**
+• Step-by-step tutorials
+• Concept explanations
+• Practice problems
+• Study guidance
+
+**Response Formats:**
+• Tables for comparisons
+• Bullet points for clarity
+• Code blocks for programming
+• Summaries for long answers
+
+How can I assist you today?`;
     }
     
-    if (lowerMessage.includes('weather')) {
-      return "I don't have real-time weather data in this demo, but you can integrate weather APIs to get current conditions for any location.";
-    }
-    
+    // Time and date
     if (lowerMessage.includes('time')) {
-      return `The current time is ${new Date().toLocaleTimeString()}.`;
+      return `🕐 **Current Time**
+
+The current time is: **${new Date().toLocaleTimeString()}**
+
+**Need more help with time?**
+• Time zone conversions
+• Scheduling assistance
+• Time management tips
+• Deadline calculations
+
+Just ask!`;
     }
     
     if (lowerMessage.includes('date')) {
-      return `Today is ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}.`;
+      return `📅 **Today's Date**
+
+Today is: **${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}**
+
+**Need date-related help?**
+• Date calculations
+• Event planning
+• Calendar assistance
+• Historical dates
+
+Feel free to ask!`;
     }
     
+    // Deep search mode
     if (mode === 'deep') {
-      const deepResponses = [
-        `🔍 Deep Search Analysis:\n\nQuery: "${userMessage}"\n\n1. Context Understanding: I've analyzed your query in depth.\n2. Multiple Sources: In production, this would search across multiple databases, APIs, and knowledge bases.\n3. Comprehensive Results: Deep search provides more detailed, researched answers with citations.\n4. Cross-referencing: Information would be verified across multiple sources.\n5. Advanced Processing: Using advanced NLP and semantic understanding.\n\nTo enable real deep search, integrate with:\n- Vector databases (Pinecone, Weaviate)\n- Search APIs (Google, Bing)\n- Knowledge graphs\n- AI APIs (OpenAI, Anthropic, Google)`,
-        
-        `📊 Deep Search Results for: "${userMessage}"\n\nAnalysis Complete:\n• Query complexity: Medium\n• Search depth: 3 levels\n• Sources checked: 15+ (simulated)\n• Confidence score: 87%\n\nIn a production environment, deep search would:\n1. Query multiple data sources simultaneously\n2. Perform semantic analysis\n3. Cross-reference information\n4. Provide source citations\n5. Offer related topics and follow-up questions\n\nThis requires integration with advanced search infrastructure and AI models.`
-      ];
-      return deepResponses[Math.floor(Math.random() * deepResponses.length)];
+      return `🔍 **Deep Search Analysis**
+
+**Query:** "${userMessage}"
+
+**Comprehensive Analysis:**
+
+**1. Understanding Your Question**
+I'm analyzing your query to provide the most relevant and detailed information.
+
+**2. Multi-Source Research** (Simulated)
+In a production environment, I would:
+• Search across multiple databases
+• Cross-reference information
+• Verify facts from reliable sources
+• Analyze different perspectives
+
+**3. Detailed Explanation**
+For complex topics, I break down:
+• Core concepts and definitions
+• Step-by-step processes
+• Real-world applications
+• Common misconceptions
+
+**4. Related Topics**
+• Connected concepts you might find useful
+• Follow-up questions to explore
+• Additional resources
+
+**5. Summary**
+Key takeaways presented clearly at the end.
+
+**To Get Real Deep Search:**
+This is a demo interface. For actual AI-powered deep search, integrate with:
+• OpenAI GPT-4
+• Anthropic Claude
+• Google Gemini
+• Custom AI models
+
+**What specific aspect would you like me to explore in depth?**`;
     }
     
-    const responses = [
-      "That's an interesting question! In a production version, this would connect to an AI API like OpenAI's GPT to provide intelligent responses.",
-      "I understand your query. To make this fully functional, you'd integrate with AI services like OpenAI, Anthropic, or Google's AI APIs.",
-      "Great question! This demo shows the interface structure. For real AI capabilities, you'd need to add backend API integration.",
-      "I'm processing your request. In a complete implementation, this would use natural language processing to understand and respond intelligently.",
-      "Thanks for your message! To enhance this further, consider adding features like conversation history, context awareness, and multi-language support."
-    ];
-    
-    return responses[Math.floor(Math.random() * responses.length)];
+    // Default helpful response
+    return `**I'm AI Smart Search - Here to Help!**
+
+I received your message: "${userMessage}"
+
+**How I Can Assist:**
+
+📚 **If you need information:**
+• Ask specific questions
+• Request explanations
+• Seek comparisons
+
+💻 **If you need technical help:**
+• Share your code or problem
+• Describe what you're trying to build
+• Ask for best practices
+
+📝 **If you need guidance:**
+• Request step-by-step instructions
+• Ask for examples
+• Seek recommendations
+
+**Tips for Better Results:**
+• Be specific about what you need
+• Mention if you want code examples
+• Let me know your experience level
+• Ask follow-up questions anytime
+
+**Ready to help!** What would you like to know more about?`;
   };
 
   const handleSendMessage = (message, imageFile, imagePreview) => {
