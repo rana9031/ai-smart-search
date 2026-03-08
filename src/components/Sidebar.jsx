@@ -8,6 +8,7 @@ function Sidebar({
   onLogout,
   onImageUpload,
   onHealthMode,
+  onAppsMode,
   disabled,
   isOpen,
   onClose
@@ -44,6 +45,15 @@ function Sidebar({
         >
           <span className="btn-icon">🖼️</span>
           <span className="btn-label">Images</span>
+        </button>
+        
+        <button 
+          onClick={() => { onAppsMode(); onClose(); }} 
+          className="sidebar-btn"
+          title="Apps & Integrations"
+        >
+          <span className="btn-icon">⚡</span>
+          <span className="btn-label">Apps</span>
         </button>
         
         <button 

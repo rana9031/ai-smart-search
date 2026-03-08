@@ -45,6 +45,17 @@ function App() {
     setSidebarOpen(false);
   };
 
+  const handleAppsMode = () => {
+    const appsMessage = {
+      id: Date.now(),
+      text: "⚡ Apps & Integrations\n\nI can help you with various productivity apps and tools:\n\n📝 Productivity:\n• Task management\n• Note-taking\n• Calendar scheduling\n• Reminders\n\n💼 Business:\n• Email drafting\n• Document creation\n• Data analysis\n• Report generation\n\n🎨 Creative:\n• Content writing\n• Brainstorming\n• Design ideas\n• Marketing copy\n\n🔧 Development:\n• Code assistance\n• Debugging help\n• API documentation\n• Technical writing\n\n📊 Analytics:\n• Data interpretation\n• Chart creation\n• Trend analysis\n• Insights generation\n\nWhat would you like help with?",
+      type: 'ai',
+      timestamp: new Date()
+    };
+    setMessages([appsMessage]);
+    setSidebarOpen(false);
+  };
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -182,6 +193,7 @@ function App() {
           onLogout={handleLogout}
           onImageUpload={handleImageUpload}
           onHealthMode={handleHealthMode}
+          onAppsMode={handleAppsMode}
           disabled={isTyping}
           isOpen={sidebarOpen}
           onClose={closeSidebar}
