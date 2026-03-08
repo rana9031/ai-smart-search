@@ -1,69 +1,66 @@
 # Deployment Instructions
 
-## GitHub Pages Setup
+## ✅ Site is Now Live!
 
-Your code has been pushed to: https://github.com/rana9031/ai-smart-search
+Your AI Smart Search app is deployed at:
+### 🌐 https://rana9031.github.io/ai-smart-search/
 
-### Enable GitHub Pages
+## Deployment Method
 
-1. Go to your repository: https://github.com/rana9031/ai-smart-search
+The site is deployed using `gh-pages` branch. The deployment has been completed successfully.
 
-2. Click on **Settings** (top right)
+## How to Update the Site
 
-3. In the left sidebar, click **Pages**
-
-4. Under "Build and deployment":
-   - **Source**: Select "GitHub Actions"
-   
-5. The GitHub Actions workflow will automatically deploy your site
-
-6. Wait 2-3 minutes for the deployment to complete
-
-7. Your site will be live at: **https://rana9031.github.io/ai-smart-search/**
-
-### Verify Deployment
-
-1. Go to the **Actions** tab in your repository
-2. You should see a workflow running called "Deploy to GitHub Pages"
-3. Wait for it to complete (green checkmark)
-4. Visit: https://rana9031.github.io/ai-smart-search/
-
-## Future Updates
-
-To update your live site:
+Whenever you make changes and want to update the live site:
 
 ```bash
-# Make your changes
+# Make your changes to the code
 git add .
 git commit -m "Your update message"
 git push origin main
+
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
-The site will automatically redeploy within 2-3 minutes.
+## Manual Deployment
+
+If you need to manually deploy:
+
+```bash
+npm run build
+npm run deploy
+```
+
+This will:
+1. Build the production version
+2. Deploy to the `gh-pages` branch
+3. Update the live site automatically
+
+## Verify Deployment
+
+1. Visit: https://rana9031.github.io/ai-smart-search/
+2. The site should load within 1-2 minutes after deployment
+
+## GitHub Pages Settings
+
+The site is configured to deploy from the `gh-pages` branch automatically. No additional settings needed in GitHub.
 
 ## Troubleshooting
 
 ### If the site doesn't load:
 
-1. Check the Actions tab for any errors
-2. Make sure GitHub Pages is enabled in Settings > Pages
-3. Verify the source is set to "GitHub Actions"
-4. Wait a few minutes and refresh
+1. Wait 2-3 minutes after deployment
+2. Clear your browser cache
+3. Try in incognito/private mode
+4. Check that the `gh-pages` branch exists in your repository
 
-### If you see 404 errors:
+### To redeploy:
 
-1. Make sure the base path in `vite.config.js` matches your repo name
-2. Current setting: `base: '/ai-smart-search/'`
-
-## Custom Domain (Optional)
-
-To use a custom domain:
-
-1. Go to Settings > Pages
-2. Add your custom domain
-3. Update DNS records as instructed
-4. Update `vite.config.js` to use `base: '/'`
+```bash
+npm run deploy
+```
 
 ---
 
-🎉 Your AI Smart Search app is now live!
+🎉 Your AI Smart Search app is live and ready to use!
