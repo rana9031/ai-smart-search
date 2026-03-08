@@ -10,12 +10,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #f5f7fa;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 /* Smooth scrolling */
