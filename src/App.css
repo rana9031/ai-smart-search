@@ -873,14 +873,19 @@
 
   .header {
     padding: 14px 16px;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
     background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
   }
 
   .dark-mode .header {
     background: #1e293b;
+    border-bottom-color: #334155;
   }
 
   .header-content {
@@ -918,8 +923,11 @@
   /* Main Content Mobile */
   .main-content {
     height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    padding-top: 68px; /* Space for fixed header */
   }
 
   /* Chat Container Mobile */
@@ -928,9 +936,10 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 20px 16px;
-    padding-bottom: 24px;
+    padding-bottom: 100px; /* Space for input bar */
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
+    height: calc(100vh - 68px - 90px); /* viewport - header - input */
   }
 
   .welcome-message {
@@ -1084,9 +1093,12 @@
     padding: 14px 16px calc(18px + env(safe-area-inset-bottom));
     background: white;
     border-top: 1px solid #e5e7eb;
-    position: sticky;
+    position: fixed;
     bottom: 0;
-    z-index: 50;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   }
 
