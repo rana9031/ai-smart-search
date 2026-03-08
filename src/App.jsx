@@ -12,6 +12,7 @@ function App() {
   const [isTyping, setIsTyping] = useState(false);
   const [searchMode, setSearchMode] = useState('quick');
   const [darkMode, setDarkMode] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleLogin = (userData) => {
@@ -21,10 +22,12 @@ function App() {
   const handleLogout = () => {
     setUser(null);
     setMessages([]);
+    setSidebarOpen(false);
   };
 
   const handleNewSearch = () => {
     setMessages([]);
+    setSidebarOpen(false);
   };
 
   const toggleDarkMode = () => {
@@ -39,6 +42,15 @@ function App() {
       timestamp: new Date()
     };
     setMessages([healthMessage]);
+    setSidebarOpen(false);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const closeSidebar = () => {
+    setSidebarOpen(false);
   };
 
   const handleImageUpload = () => {
@@ -156,6 +168,10 @@ function App() {
         style={{ display: 'none' }}
       />
       <div className="container">
+        <div 
+          className={`sidebar-overlay ${sidebarOpen ? 'show' : ''}`}
+          onClick={closeSidebar}
+        ></div>
         <Sidebar
           searchMode={searchMode}
           onSearchModeChange={setSearchMode}
@@ -167,9 +183,11 @@ function App() {
           onImageUpload={handleImageUpload}
           onHealthMode={handleHealthMode}
           disabled={isTyping}
+          isOpen={sidebarOpen}
+          onClose={closeSidebar}
         />
         <div className="main-content">
-          <Header user={user} />
+          <Header user={user} onMenuClick={toggleSidebar} />
           <ChatContainer messages={messages} isTyping={isTyping} darkMode={darkMode} />
           <InputContainer 
             onSendMessage={handleSendMessage} 

@@ -8,15 +8,17 @@ function Sidebar({
   onLogout,
   onImageUpload,
   onHealthMode,
-  disabled
+  disabled,
+  isOpen,
+  onClose
 }) {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="sidebar-logo">AI</div>
       
       <div className="sidebar-top">
         <button 
-          onClick={onNewSearch} 
+          onClick={() => { onNewSearch(); onClose(); }} 
           className="sidebar-btn"
           title="New chat"
           disabled={!hasMessages}
@@ -26,7 +28,7 @@ function Sidebar({
         </button>
         
         <button 
-          onClick={() => onSearchModeChange(searchMode === 'deep' ? 'quick' : 'deep')} 
+          onClick={() => { onSearchModeChange(searchMode === 'deep' ? 'quick' : 'deep'); onClose(); }} 
           className={`sidebar-btn ${searchMode === 'deep' ? 'active' : ''}`}
           title={searchMode === 'deep' ? 'Switch to Quick Search' : 'Switch to Deep Search'}
         >
@@ -35,7 +37,7 @@ function Sidebar({
         </button>
         
         <button 
-          onClick={onImageUpload} 
+          onClick={() => { onImageUpload(); onClose(); }} 
           className="sidebar-btn"
           disabled={disabled}
           title="Upload image"
@@ -45,7 +47,7 @@ function Sidebar({
         </button>
         
         <button 
-          onClick={onHealthMode} 
+          onClick={() => { onHealthMode(); onClose(); }} 
           className="sidebar-btn"
           title="Health assistant"
         >
@@ -54,7 +56,7 @@ function Sidebar({
         </button>
         
         <button 
-          onClick={onToggleDarkMode} 
+          onClick={() => { onToggleDarkMode(); onClose(); }} 
           className="sidebar-btn"
           title={darkMode ? 'Light mode' : 'Dark mode'}
         >
@@ -65,7 +67,7 @@ function Sidebar({
       
       <div className="sidebar-bottom">
         <button 
-          onClick={onLogout} 
+          onClick={() => { onLogout(); onClose(); }} 
           className="sidebar-btn"
           title="Logout"
         >
